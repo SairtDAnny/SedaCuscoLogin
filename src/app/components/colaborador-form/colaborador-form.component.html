@@ -1,0 +1,41 @@
+<div class="container">
+    <form>
+    
+      <legend class="mb-5">Registro de un Nuevo Trabajador</legend>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Nombres</label>
+        <input type="text" name="Nombre" class="form-control"  placeholder="Registre su Nombre"  [(ngModel)]="colaborador.nombreColaborador" >
+      </div>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Apellidos</label>
+        <input type="text" name="Apellidos" class="form-control" placeholder="Registre sus Apellidos" [(ngModel)]="colaborador.apellidoColaborador">
+      </div>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">DNI</label>
+        <input type="text" name="DNI" class="form-control" placeholder="Registre su DNI" [(ngModel)]="colaborador.id">
+      </div>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Cargo</label>
+        <input type="text" name="Cargo" class="form-control" placeholder="Registre su Cargo en la emrpesa" [(ngModel)]="colaborador.cargoColaborador">
+      </div>
+
+
+      <div class="form-group row mb-3">
+        <label for="oficina" class="col-form-label col-sm-2">Oficina</label>
+        <select [compareWith]="compararNivelCol" [(ngModel)]="colaborador.oficina" name="oficina" class="form-control">
+          <option [ngValue]="undefined">----seleccione la oficina</option>
+          <option *ngFor="let oficina of oficinas" [ngValue]="oficina">{{oficina.desOficina}}</option>
+        </select>
+      </div>
+
+
+      <div class="mb-5">
+      </div>
+      <button type="submit" class="btn btn-primary mb-5 me-3" (click)="insertColaborador()">Registrar Trabajador</button>
+      <button type="submit" class="btn btn-primary mb-5" (click)="actualizarColaborador()">Actualizar Trabajador</button>
+      <!-- <button type="submit" class="btn btn-primary" (click)="actualizarColaborador()" *ngIf="colaborador.idDniColaborador">Registrar Trabajador</button> -->
+    </form>
+</div>
+<pre>
+  {{colaborador | json}}
+</pre>

@@ -1,0 +1,36 @@
+<div class="container">
+    <h2 class="mb-4">Lista de Trabjadores Registrados</h2>
+    <button class="btn btn-primary mb-3" [routerLink]="['formsColaborador']">Registrar Nuevo Trabajador</button>
+    <table class="table">
+        <thead>
+        <tr> 
+            <th scope="col">DNI</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Oficina</th>
+
+            <th scope="col">Opciones/Acciones</th>
+        </tr>
+        </thead>
+ 
+        <tbody>
+        <tr *ngFor="let colaborador of colaboradores">
+            <!-- <th scope="row">{{colaborador.id}}</th> -->
+            <td>{{colaborador.id}}</td>
+            <td>{{colaborador.nombreColaborador}}</td>
+            <td>{{colaborador.apellidoColaborador}}</td>
+            <td>{{colaborador.cargoColaborador}}</td>
+            <td>{{colaborador.oficina.desOficina}}</td>
+
+            <td>
+                <button class="btn btn-info me-3" [routerLink]="['formsColaborador',colaborador.id]">Editar</button>
+                <button class="btn btn-danger" (click)="eliminarProducto(colaborador.id)" >Eliminar</button>
+            </td>
+
+            <td></td>
+        </tr>
+        
+        </tbody>
+    </table>
+</div>

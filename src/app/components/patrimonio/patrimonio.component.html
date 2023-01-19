@@ -1,0 +1,34 @@
+<div class="container">
+    <h2 class="mb-4">Lista de EPP Registrados</h2>
+    <button class="btn btn-primary mb-3" [routerLink]="['formsPatrimonio']">Registrar Nuevo EPP</button>
+    <table class="table">
+        <thead>
+        <tr>
+         
+            <th scope="col">Descripcion</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Uidad/Medida</th>
+            <th scope="col">Retornable</th>
+            <th scope="col">Opciones/Acciones</th>
+        </tr>
+        </thead>
+ 
+        <tbody>
+        <tr *ngFor="let patrimonio of patrimonios">
+            <!-- <th scope="row">{{colaborador.id}}</th> -->
+            <td>{{patrimonio.desPatrimonio}}</td>
+            <td>{{patrimonio.stock}}</td>
+            <td>{{patrimonio.umPatrimonio}}</td>
+            <td>{{patrimonio.retornoPatrimonio}}</td>
+
+            <td>
+                <button class="btn btn-info me-3" [routerLink]="['formsPatrimonio',patrimonio.id]">Editar</button>
+                <!-- <button class="btn btn-danger" (click)="deletePatrimonio(patrimonio.id)" >Eliminar</button> -->
+            </td>
+
+            <td></td>
+        </tr>
+        
+        </tbody>
+    </table>
+</div>

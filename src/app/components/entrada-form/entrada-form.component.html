@@ -1,0 +1,49 @@
+<div class="container">
+    <form>
+    
+      <legend class="mb-5">Registro de un Nuevo Ingreso</legend>
+
+      <div class="form-group row mb-3">
+        <label for="patrimopnio" class="col-form-label col-sm-2">Descripcion del EPP</label>
+        <select [compareWith]="compararNivel" [(ngModel)]="entrada.patrimonioEntrada" name="patrimonioEntrada" class="form-control">
+          <option [ngValue]="undefined">----seleccione el EPP-----</option>
+          <option *ngFor="let patrimonio of patrimonios" [ngValue]="patrimonio">{{patrimonio.desPatrimonio}}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Cantidad de  Ingreso</label>
+        <input type="text" name="cantidadEntrada" class="form-control" placeholder="Registre sus Apellidos" [(ngModel)]="entrada.cantidadEntrada">
+      </div>
+
+      <!-- <form name="formulario" method="post" action="/send.php">
+       
+        <label for="disabledTextInput" class="form-label">Selelciona la Fecha</label>
+        <input type="date" name="fecha" step="2" [(ngModel)]="entrada.fechaEntrada"/>
+    
+      </form> -->
+
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Fecha</label>
+        <input type="date" name="fecha" class="form-control" placeholder="Registre su DNI" [(ngModel)]="entrada.fechaEntrada">
+      </div>
+      
+      
+
+
+      <div class="mb-5">
+        <!-- <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
+          <label class="form-check-label" for="disabledFieldsetCheck">
+            Can't check this
+          </label>
+        </div> --> 
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="insertEntrada()" *ngIf="!entrada.id">Registrar Ingreso</button>
+      <button type="submit" class="btn btn-primary" (click)="updateEntrada()" *ngIf="entrada.id">Registrar Ingreso</button>
+    </form>
+</div>
+<pre>
+  {{entrada | json}}
+</pre>
+

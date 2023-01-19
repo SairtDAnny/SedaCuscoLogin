@@ -1,0 +1,48 @@
+
+
+<div class="container">
+    <form>
+      <legend class="mb-5">Registro de un Nuevo EPP</legend>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Descripcion del EPP</label>
+        <input type="text" name="descripcion" class="form-control"  placeholder="Registre la descripcion del EPP"  [(ngModel)]="patrimonio.desPatrimonio">
+      </div>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Stock</label>
+        <input type="text" name="stock" class="form-control" placeholder="Ingrese la cantidad a registrar" [(ngModel)]="patrimonio.stock">
+      </div>
+
+
+    
+
+    <div class="mb-3">
+        <label for="disabledTextInput" class="form-label me-4">Unidad de Medida</label>
+        <select [compareWith]="compararMedidaPat" name="meditacontrol" [(ngModel)]="patrimonio.umPatrimonio" class="col-form-label" data-show-subtext="true" data-live-search="true">
+            <!-- <option value='' selected="true">Seleccione el tipo de medida a manejar por entrega</option> -->
+            <option [ngValue]="undefined">----seleccione la Unidad/Medida-----</option>
+            <option value='Par'>Par</option>
+            <option value='Unidad'>Unidad</option>
+            <option value='Paquete'>Paquete</option>
+            <option value='Caja'>Caja</option>
+        </select>
+       </div> 
+    
+   <div class="mb-3">
+    <label for="disabledTextInput" class="form-label me-5">Retorno de EPP</label>
+    <select [compareWith]="compararMedidaPat" name="retorno" [(ngModel)]="patrimonio.retornoPatrimonio" class="col-form-label" data-show-subtext="true" data-live-search="true">
+        <!-- <option value='' selected="true">El EPP se retornara a la EPS</option> -->
+        <option [ngValue]="undefined">----selecione si es Retornable -----</option>
+        <option value='True'>Si</option>
+        <option value='False'>No</option>
+    </select>
+   </div> 
+
+      <div class="mb-5">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="insertPatrimonio()" *ngIf="!patrimonio.id">Registrar EPP</button>
+      <button type="submit" class="btn btn-primary" (click)="updatePatrimonio()" *ngIf="patrimonio.id">Registrar EPP</button>
+    </form>
+</div>
+<pre>
+  {{patrimonio | json}}
+</pre>

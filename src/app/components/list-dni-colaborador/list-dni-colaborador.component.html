@@ -1,0 +1,82 @@
+<!-- <div class="container">
+    <div>
+        <h2 class="mb-4">Lista de Registro de Entrega de EPP por Trabajdor</h2>
+        <i class="fa fa-search"></i>
+        <tr>
+            <input type="text" class="form-control mb-2" placeholder="Search..." name="buscar" [(ngModel)]="salidaDni.dniColaborador">
+            <button class="btn btn-primary mb-5" (click)="listDniColaborador( salidaDni.dniColaborador)" >BUSCAR </button>
+        </tr>
+    </div>
+    <table class="table">
+            <thead>
+            <tr> 
+    
+                <th scope="col">Descripcion del EPP</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Unida/Medida</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Tipo de Entrega</th>
+            <th><button class="btn btn-primary mb-3" >Imprimir Lista </button></th> 
+            </tr>
+            </thead>
+    
+            <tbody>
+            <tr *ngFor="let listarDni of salidasDni">
+                <td>{{listarDni.desPatrimonio}}</td>
+                <td>{{listarDni.cantidad}}</td>
+                <td>{{(listarDni.umPatrimonio)}}</td>
+                <td>{{listarDni.fecha}}</td>
+                <td>{{listarDni.fechaSReno}}</td>
+                <td>{{listarDni.fechaTReno}}</td>
+                <td>{{listarDni.tipo}}</td>
+
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+</div> -->
+
+<div class="container">
+    <div>
+        <h2 class="mb-4">Lista de Registro de Entrega de EPP por Trabajdor</h2>
+        <i class="fa fa-search"></i>
+        <tr>
+            <input type="text" class="form-control mb-2" placeholder="Search..." name="buscar" [(ngModel)]="salidaDni.dniColaborador">
+            <button class="btn btn-primary mb-5" (click)="listDniColaborador( salidaDni.dniColaborador)" >BUSCAR </button>
+        </tr>
+    </div>
+    <table class="table">
+
+            <thead>
+            <tr> 
+    
+                <th scope="col">Descripcion del EPP</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Unida/Medida</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Tipo de Entrega</th>
+                 <th scope="col">Opción</th> 
+             <th><button class="btn btn-primary mb-3" >Imprimir Lista </button></th> 
+            </tr>
+            </thead>
+    
+            <tbody>
+            <tr *ngFor="let salida of regsalida">
+                <td>{{salida.patrimonioSalida.desPatrimonio}}</td>
+                <td>{{salida.cantidad}}</td>
+                <td>{{(salida.patrimonioSalida.umPatrimonio)}}</td>
+                <td>{{salida.fecha}}</td>
+                <td>{{salida.fechaSReno}}</td>
+                <td>{{salida.fechaTReno}}</td>
+                <td>{{salida.tipo}}</td>
+                <button class="btn btn-outline-success" [routerLink]="['formsSalida',salida.id]" *ngIf="!salida.fechaTReno">Renovar</button>
+                <td></td>
+            </tr>
+            
+            </tbody>
+        </table>
+</div>

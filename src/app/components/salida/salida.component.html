@@ -1,0 +1,46 @@
+<div class="container">
+    <div>
+        <h2 class="mb-4">Lista de Registro de Entrega de EPP </h2>
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control mb-5" placeholder="Search..." name="filtroSalida " [ngModel]="filterSalida">
+    </div>
+    <!-- <button class="btn btn-primary mb-3" [routerLink]="['formsSalida']">Registrar Nuevo Entrega</button> -->
+    <table class="table">
+        <thead>
+        <tr> 
+ 
+            <th scope="col">Descripcion del EPP</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Unida/Medida</th>
+            <th scope="col">Fecha Entrega</th>
+            <th scope="col">Fecha Renovacion</th>
+            <th scope="col">Fecha Renovacion</th>
+            <th scope="col">Tipo de Entrega</th>
+            <th scope="col">Trabajador</th>
+            <!-- <th scope="col">Opciones/Acciones</th> -->
+           <th><button class="btn btn-primary mb-3" >Imprimir Lista </button></th> 
+        </tr>
+        </thead>
+ 
+        <tbody>
+        <tr *ngFor="let salida of salidas">
+            <td>{{salida.patrimonioSalida.desPatrimonio}}</td>
+            <td>{{salida.cantidad}}</td>
+            <td>{{(salida.patrimonioSalida.umPatrimonio)}}</td>
+            <td>{{salida.fecha}}</td>
+            <td>{{salida.fechaSReno}}</td>
+            <td>{{salida.fechaTReno}}</td>
+            <td>{{salida.tipo}}</td>
+            <td>{{salida.colaborador.nombreColaborador+" "+salida.colaborador.apellidoColaborador}}</td>
+
+            <td>
+                <!-- <button class="btn btn-info me-3" [routerLink]="['formsSalida',salida.id]">Editar</button> -->
+                <!-- <button class="btn btn-danger" (click)="deteleSalida(salida.id)" >Eliminar</button> -->
+            </td>
+
+            <td></td>
+        </tr>
+        
+        </tbody>
+    </table>
+</div>

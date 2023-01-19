@@ -1,0 +1,67 @@
+<div class="container">
+    <form>
+    
+      <legend class="mb-5">Registro de Entrega de Epp</legend>
+
+      <div class="form-group row mb-3">
+        <label for="patrimonio" class="col-form-label col-sm-2">Descripcion del EPP</label>
+        <select [compareWith]="compararNivel" [(ngModel)]="salida.patrimonioSalida" name="patrimonioSalida" class="form-control">
+          <option [ngValue]="undefined">----seleccione el EPP-----</option>
+          <option *ngFor="let patrimonio of patrimonios" [ngValue]="patrimonio">{{patrimonio.desPatrimonio}}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Cantidad de  Ingreso</label>
+        <input type="text" name="cantidadSalida" class="form-control" placeholder="Registre la cantidad de entrega" [(ngModel)]="salida.cantidad">
+      </div>
+
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label me-4">Tipo de Entrega</label><tr></tr>
+        <select [compareWith]="compararNivel" name="tipo" [(ngModel)]="salida.tipo" class="col-form-label" data-show-subtext="true" data-live-search="true">
+            <option [ngValue]="undefined">----seleccione el tipo de Entrega-----</option>
+            <option value='Primera Entrega'>Primera Entrega</option>
+            <option value='Segunda Entrega'>Segunda Entrega</option>
+            <option value='Tercera Entrega'>Tercera Entrega</option>
+            <option value='Cuarta Entrega'>Cuarta Entrega</option>
+        </select>
+       </div> 
+
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Fecha</label>
+        <input type="date" name="fecha" class="form-control" placeholder="Registre la fecha" [(ngModel)]="salida.fecha">
+      </div>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Fecha 1° Renovación</label>
+        <input type="date" name="fecha2" class="form-control" placeholder="Registre  la fecha" [(ngModel)]="salida.fechaSReno">
+      </div>
+      <div class="mb-3">
+        <label for="disabledTextInput" class="form-label">Fecha 2° Renovación</label>
+        <input type="date" name="fecha3" class="form-control" placeholder="Registre  la fecha" [(ngModel)]="salida.fechaTReno">
+      </div>
+      
+
+      <div class="form-group row mb-3">
+        <label for="colaborador" class="col-form-label col-sm-2">Trabjador</label>
+        <select [compareWith]="compararNivel" [(ngModel)]="salida.colaborador" name="oficina" class="form-control">
+          <option [ngValue]="undefined">----seleccione el Trabajador ----</option>
+          <option *ngFor="let colaborador of colaboradores" [ngValue]="colaborador">{{colaborador.nombreColaborador+" "+colaborador.apellidoColaborador}}</option>
+        </select>
+      </div>
+      
+
+
+      <div class="mb-5">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="insertSalida()" *ngIf="!salida.id">Registrar Ingreso</button>
+      <button type="submit" class="btn btn-primary" (click)="updateSalida()" *ngIf="salida.id">Registrar Ingreso</button>
+      <div class="mb-5">
+    </div>
+    <div class="mb-5">
+    </div>
+    </form>
+</div>
+<pre>
+  {{salida   | json}}
+</pre>
+
