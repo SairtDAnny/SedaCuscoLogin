@@ -39,8 +39,8 @@
 
       <div class="mb-5">
       </div>
-      <button type="submit" class="btn btn-primary" (click)="insertPatrimonio()" *ngIf="!patrimonio.id">Registrar EPP</button>
-      <button type="submit" class="btn btn-primary" (click)="updatePatrimonio()" *ngIf="patrimonio.id">Registrar EPP</button>
+      <button type="submit" class="btn btn-primary" (click)="insertPatrimonio(patrimonio)" *ngIf="patrimonio.id">Registrar EPP</button>
+      <!-- <button type="submit" class="btn btn-primary" (click)="updatePatrimonio(patrimonio.id)" *ngIf="patrimonio.id">Actiualizar EPP</button> -->
     </form>
 </div>
 <pre>

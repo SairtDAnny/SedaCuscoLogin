@@ -21,7 +21,11 @@ export class ColaboradorFormComponent implements OnInit,OnDestroy{
   oficinas: Oficina[]=[];
   subRef$: Subscription;
 
-  constructor(private colService : ColaboradorService, private activatedRoute: ActivatedRoute, private router:Router, private dataService:DataService) {}
+  constructor(
+    private colService : ColaboradorService, 
+    private activatedRoute: ActivatedRoute, 
+    private router:Router, 
+    private dataService:DataService) {}
 
   ngOnInit(): void {
     const url = 'http://localhost:8080/api/oficina/list';
@@ -36,36 +40,63 @@ export class ColaboradorFormComponent implements OnInit,OnDestroy{
       this.activatedRoute.params
       .subscribe(params => {
         let id: string = params['id'];
-        console.log("es: "+id);
+       
         if(id){
-          this.colService.obtenerColaborador(id)
-          .subscribe(response => this.colaborador = response);
+         /* this.colService.obtenerColaborador(id)
+          .subscribe(response => this.colaborador = response);*/
+          this.obtenerColaborador(id);
         }
       })
   } 
+  obtenerColaborador(id:string){
+    const url = 'http://localhost:8080/api/colaborador/';
+          this.subRef$ = this.dataService.get<Colaborador>(url+id)
+          .subscribe(res => {
+            this.colaborador = res.body;
+          },
+          err => {
+            console.log('error al recuperar colaborador', err);
+            console.log(id);
+            
+          });
+  }
 
-  insertColaboradr( ){
+  /*insertColaboradr( ){
     console.log(this.colaborador)
     this.colService.insertColaborador(this.colaborador)
     .subscribe(response => this.router.navigate(['']));
+  }*/
+
+  insertColaborador(colaborador:Colaborador){
+    const url = 'http://localhost:8080/api/colaborador/insert';
+    this.subRef$=this.dataService.post<Colaborador>(url,this.colaborador)
+    .subscribe(res => this.router.navigate(['colaborador']))
+  }
+  /*updateEntrada(){
+    this.entService.updateEntrada(this.entrada)
+    .subscribe(response => this.router.navigate(['entrada']));
   }
 
-  insertColaborador(){
-  const url = 'http://localhost:8080/api/colaborador/insert';
-  this.subRef$=this.dataService.post<Colaborador>(url,this.colaborador)
-  .subscribe(res => this.router.navigate(['colaborador']))
-}
+  updateEntrada(entrada:Entrada):Observable<Entrada>{
+    return this.http.put<Entrada>(this.url+'/update/'+entrada.id, entrada);
+  }*/
 
-
-  actualizarColaborador(){
-    this.colService.actualizarColaborador(this.colaborador)
-    .subscribe(response => this.router.navigate(['']));
+  actualizarColaborador(id:string){
+    const url = 'http://localhost:8080/api/colaborador/update/';
+    this.subRef$=this.dataService.put<Colaborador>(url+id,this.colaborador)
+    .subscribe(res => this.router.navigate(['colaborador']))
   }
+  
 
   compararNivelCol(o1: Colaborador, o2:Colaborador): boolean{
     if(o1 === undefined && o2 === undefined) return true;
     return o1 === null || o2 === null || o1 === undefined || o2 === undefined ? false: o1.id == o2.id;
   }
+
+  /*actualizarColaborado(){
+    this.colService.actualizarColaborador(this.colaborador)
+    .subscribe(response => this.router.navigate(['']));
+  }*/
 
   ngOnDestroy(): void {
     if(this.subRef$){

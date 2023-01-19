@@ -53,8 +53,8 @@
 
       <div class="mb-5">
       </div>
-      <button type="submit" class="btn btn-primary" (click)="insertSalida()" *ngIf="!salida.id">Registrar Ingreso</button>
-      <button type="submit" class="btn btn-primary" (click)="updateSalida()" *ngIf="salida.id">Registrar Ingreso</button>
+      <button type="submit" class="btn btn-primary" (click)="insertSalida(salida)" *ngIf="!salida.id">Registrar Ingreso</button>
+      <button type="submit" class="btn btn-primary" (click)="updateSalida(salida.id)" *ngIf="salida.id">Renovar</button>
       <div class="mb-5">
     </div>
     <div class="mb-5">

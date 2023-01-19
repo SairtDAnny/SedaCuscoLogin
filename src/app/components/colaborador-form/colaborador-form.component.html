@@ -31,8 +31,8 @@
 
       <div class="mb-5">
       </div>
-      <button type="submit" class="btn btn-primary mb-5 me-3" (click)="insertColaborador()">Registrar Trabajador</button>
-      <button type="submit" class="btn btn-primary mb-5" (click)="actualizarColaborador()">Actualizar Trabajador</button>
+      <button type="submit" class="btn btn-primary mb-5 me-3" (click)="insertColaborador(colaborador)">Registrar Trabajador</button>
+      <button type="submit" class="btn btn-primary mb-5" (click)="actualizarColaborador(colaborador.id)">Actualizar Trabajador</button>
       <!-- <button type="submit" class="btn btn-primary" (click)="actualizarColaborador()" *ngIf="colaborador.idDniColaborador">Registrar Trabajador</button> -->
     </form>
 </div>

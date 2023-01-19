@@ -43,7 +43,7 @@ export class DataService {
       });
   }
 
-  delete<T>(url: string, data:any): Observable<HttpResponse<T>>{
+  delete<T>(url: string): Observable<HttpResponse<T>>{
     const httpHeaders: HttpHeaders = this.getHeaders();
     return this.http.delete<T>(url,
       {

@@ -39,8 +39,8 @@
           </label>
         </div> --> 
       </div>
-      <button type="submit" class="btn btn-primary" (click)="insertEntrada()" *ngIf="!entrada.id">Registrar Ingreso</button>
-      <button type="submit" class="btn btn-primary" (click)="updateEntrada()" *ngIf="entrada.id">Registrar Ingreso</button>
+      <button type="submit" class="btn btn-primary" (click)="insertEntrada(entrada)" *ngIf="!entrada.id">Registrar Ingreso</button>
+      <button type="submit" class="btn btn-primary" (click)="updateEntrada(entrada.id)" *ngIf="entrada.id">Actualizar Ingreso</button>
     </form>
 </div>
 <pre>
